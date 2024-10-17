@@ -11,9 +11,11 @@ public class Ejercicio4 {
         Logs.info("Ordenar todos los usuarios por su apellido orden alfabético descendente Z -> A");
         final var listUsuarios = ExcelReader.getListUsuarios();
 
-        listUsuarios
+        final var listUsuariosFiltrados = listUsuarios
                 .stream()
                 .sorted(Comparator.comparing(Usuario::getApellido).reversed())
-                .forEach(x -> Logs.info(x.getApellido()));
+                .toList();
+
+        Logs.info("Los usuarios filtrados son: %s", listUsuariosFiltrados);
     }
 }

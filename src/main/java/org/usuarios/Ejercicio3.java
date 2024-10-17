@@ -9,10 +9,11 @@ public class Ejercicio3 {
         Logs.info("Crear un método que filtre todos los usuarios que sean de China");
         final var listUsuarios = ExcelReader.getListUsuarios();
 
-        final var pais = "China";
-        listUsuarios
+        final var listUsuariosFiltrados = listUsuarios
                 .stream()
-                .filter(u -> u.getPais().equals(pais.toUpperCase()))
-                .forEach(x -> Logs.info(x.toString()));
+                .filter(u -> u.getPais().equals("CHINA"))
+                .toList();
+
+        Logs.info("Los usuarios filtrados son: %s", listUsuariosFiltrados);
     }
 }
