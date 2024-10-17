@@ -2,6 +2,7 @@ package org.utils;
 
 import com.github.javafaker.Faker;
 
+import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +39,10 @@ public class Helpers {
             lista.add(faker.number().randomDouble(2, min, max));
         }
         return lista;
+    }
+
+    public static String normalizeUsingJavaText(String source){
+        source = Normalizer.normalize(source, Normalizer.Form.NFD);
+        return source.replaceAll("[^\\p{ASCII}]", "");
     }
 }
